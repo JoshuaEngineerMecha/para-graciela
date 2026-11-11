@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#062b4a">
+<title>Para Graciela 🐋</title>
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin:0; min-height:100%; }
+  body {
+    overflow-x:hidden; color:#fff; font-family: Georgia, 'Times New Roman', serif;
+    background: linear-gradient(180deg,#071d39 0%,#0b4568 48%,#087c91 100%);
+    min-height:100vh; display:flex; align-items:center; justify-content:center;
+  }
+  .ocean { position:fixed; inset:0; overflow:hidden; pointer-events:none; }
+  .glow { position:absolute; width:75vw; height:75vw; max-width:700px; max-height:700px;
+    left:50%; top:30%; transform:translate(-50%,-50%);
+    background:radial-gradient(circle,rgba(94,220,235,.22),transparent 68%); }
+  .stars { position:absolute; inset:0; opacity:.6;
+    background-image:radial-gradient(2px 2px at 12% 18%,#fff 60%,transparent),
+      radial-gradient(1.5px 1.5px at 78% 13%,#fff 60%,transparent),
+      radial-gradient(2px 2px at 60% 31%,#b8f8ff 60%,transparent),
+      radial-gradient(1px 1px at 30% 42%,#fff 60%,transparent),
+      radial-gradient(1.5px 1.5px at 91% 48%,#fff 60%,transparent);
+  }
+  .bubble { position:absolute; bottom:-40px; width:9px; height:9px; border:1px solid rgba(210,250,255,.6);
+    border-radius:50%; animation:rise linear infinite; }
+  .bubble:nth-child(2){left:12%;animation-duration:12s}
+  .bubble:nth-child(3){left:27%;animation-duration:16s;animation-delay:3s;width:6px;height:6px}
+  .bubble:nth-child(4){left:76%;animation-duration:13s;animation-delay:1s}
+  .bubble:nth-child(5){left:88%;animation-duration:18s;animation-delay:5s;width:5px;height:5px}
+  @keyframes rise { to { transform:translateY(-115vh) translateX(35px); opacity:0; } }
+  .card {
+    position:relative; z-index:2; width:min(92vw,650px); margin:28px 0; padding:34px 25px 30px;
+    text-align:center; border:1px solid rgba(190,244,255,.25); border-radius:28px;
+    background:linear-gradient(145deg,rgba(7,35,62,.78),rgba(5,76,96,.56));
+    box-shadow:0 25px 90px rgba(0,0,0,.28); backdrop-filter:blur(9px);
+  }
+  .eyebrow { color:#a9eff4; letter-spacing:.24em; text-transform:uppercase; font: 11px Arial,sans-serif; }
+  h1 { font-size:clamp(35px,8vw,57px); line-height:1.04; margin:12px 0 6px; font-weight:normal; }
+  .subtitle { color:#c5f3f5; font-size:17px; margin:0 0 10px; }
+  .scene { height:210px; position:relative; margin:5px auto 4px; }
+  .whale { position:absolute; width:min(75%,360px); left:50%; top:50%; transform:translate(-50%,-45%);
+    animation:swim 6s ease-in-out infinite; filter:drop-shadow(0 12px 12px rgba(0,0,0,.18)); }
+  .whale.back { width:min(40%,190px); top:68%; left:79%; opacity:.45; animation-delay:-2.5s; transform:translate(-50%,-50%) scaleX(-1); }
+  @keyframes swim { 0%,100%{translate:-8px 4px;rotate:-2deg} 50%{translate:12px -9px;rotate:2deg} }
+  .message { max-width:510px; margin:12px auto 0; font-size:clamp(17px,4vw,20px); line-height:1.65; color:#f1fcff; }
+  .message strong { color:#a8f0ef; font-weight:normal; }
+  .signature { margin-top:20px; font-size:22px; color:#b6f4f3; font-style:italic; }
+  .heart { display:inline-block; color:#ff9db6; animation:beat 1.3s ease-in-out infinite; }
+  @keyframes beat { 50%{transform:scale(1.28)} }
+  .wave { position:fixed; bottom:-5px; left:-5%; width:110%; height:100px; opacity:.28;
+    background:radial-gradient(ellipse at 50% 100%,#7ee9e6 0 35%,transparent 36%); background-size:55% 100%; }
+  .reveal-button {
+    margin-top:22px; border:1px solid rgba(190,244,255,.55); border-radius:999px;
+    padding:13px 25px; color:#07344f; background:linear-gradient(135deg,#c7fbf5,#7edbe3);
+    font: bold 15px Arial,sans-serif; letter-spacing:.04em; cursor:pointer;
+    box-shadow:0 8px 24px rgba(0,0,0,.2); transition:transform .2s, filter .2s;
+  }
+  .reveal-button:active { transform:scale(.96); }
+  .reveal-button:hover { filter:brightness(1.08); }
+  .surprise { display:none; margin:20px auto 0; padding-top:15px; border-top:1px solid rgba(190,244,255,.2); }
+  .surprise.show { display:block; animation:appear .8s ease both; }
+  @keyframes appear { from{opacity:0;transform:translateY(12px)} to{opacity:1;transform:translateY(0)} }
+  .surprise h2 { color:#ffd2df; font-size:clamp(30px,8vw,43px); font-weight:normal; margin:0 0 8px; }
+  .surprise-whale { width:150px; max-width:45%; display:block; margin:4px auto 0;
+    animation:surpriseSwim 3s ease-in-out infinite; filter:drop-shadow(0 8px 10px rgba(0,0,0,.2)); }
+  @keyframes surpriseSwim { 0%,100%{transform:translateX(-18px) rotate(-3deg)} 50%{transform:translateX(18px) rotate(3deg)} }
+  .hint { margin-top:20px; color:rgba(225,250,255,.62); font:11px Arial,sans-serif; letter-spacing:.08em; }
+  @media(max-width:420px){ .card{padding:28px 19px 24px}.scene{height:175px}.message{line-height:1.55} }
+  @media(prefers-reduced-motion:reduce){ *,*::before,*::after{animation:none!important;scroll-behavior:auto!important} }
+</style>
+</head>
+<body>
+<div class="ocean" aria-hidden="true">
+  <div class="glow"></div><div class="stars"></div>
+  <i class="bubble"></i><i class="bubble"></i><i class="bubble"></i><i class="bubble"></i>
+</div>
+<main class="card">
+  <div class="eyebrow">Un mensaje desde lo más profundo</div>
+  <h1>Para Graciela</h1>
+  <p class="subtitle">Hay sentimientos tan grandes como el océano…</p>
+  <div class="scene" aria-hidden="true">
+    <svg class="whale back" viewBox="0 0 420 220">
+      <path d="M55 112 C82 47 190 36 275 75 C310 90 333 91 365 65 C359 100 349 118 325 130 C348 145 362 161 369 181 C333 166 304 155 270 155 C180 192 83 168 55 112Z" fill="#78c7d5"/>
+      <path d="M143 153 Q166 189 206 179 Q185 155 181 140Z" fill="#4b9bad"/>
+      <circle cx="105" cy="105" r="5" fill="#082f4c"/>
+      <path d="M74 121 Q95 132 119 127" fill="none" stroke="#d4f8f8" stroke-width="3" opacity=".7"/>
+    </svg>
+    <svg class="whale" viewBox="0 0 420 220">
+      <path d="M55 112 C82 47 190 36 275 75 C310 90 333 91 365 65 C359 100 349 118 325 130 C348 145 362 161 369 181 C333 166 304 155 270 155 C180 192 83 168 55 112Z" fill="#b2e7e9"/>
+      <path d="M143 153 Q166 189 206 179 Q185 155 181 140Z" fill="#75c3d0"/>
+      <path d="M250 154 Q275 187 305 175 Q284 153 282 140Z" fill="#75c3d0"/>
+      <circle cx="105" cy="105" r="5" fill="#082f4c"/>
+      <path d="M74 121 Q95 132 119 127" fill="none" stroke="#fff" stroke-width="3" opacity=".8"/>
+      <path d="M91 57 Q75 29 94 15 M108 55 Q107 25 124 12" fill="none" stroke="#bafaff" stroke-width="5" stroke-linecap="round" opacity=".85"/>
+      <circle cx="91" cy="13" r="4" fill="#bafaff"/><circle cx="124" cy="10" r="4" fill="#bafaff"/>
+    </svg>
+  </div>
+  <p class="message">
+    Graciela, quiero que sepas que <strong>te amo</strong>. No te prometo que todo será perfecto,
+    pero sí que voy a esforzarme cada día, crecer y dar lo mejor de mí.
+    Quiero construir contigo algo bonito, cuidarte, apoyarte y demostrarte con hechos
+    lo importante que eres para mí.
+    <br><br>
+    Así como estas ballenas recorren juntas la inmensidad del mar, quiero seguir caminando
+    a tu lado, incluso cuando el camino tenga olas grandes. <strong>Quiero elegirte y esforzarme por nosotros, día a día.</strong>
+  </p>
+  <div class="signature">Con todo mi amor <span class="heart">♥</span></div>
+
+  <button class="reveal-button" id="loveButton" type="button" aria-expanded="false">
+    Presiona aquí ❤️
+  </button>
+  <section class="surprise" id="surprise" aria-live="polite">
+    <h2>¡TE AMO, GRACIELA!</h2>
+    <svg class="surprise-whale" viewBox="0 0 420 220" role="img" aria-label="Ballena nadando">
+      <path d="M55 112 C82 47 190 36 275 75 C310 90 333 91 365 65 C359 100 349 118 325 130 C348 145 362 161 369 181 C333 166 304 155 270 155 C180 192 83 168 55 112Z" fill="#b2e7e9"/>
+      <path d="M143 153 Q166 189 206 179 Q185 155 181 140Z" fill="#75c3d0"/>
+      <path d="M250 154 Q275 187 305 175 Q284 153 282 140Z" fill="#75c3d0"/>
+      <circle cx="105" cy="105" r="5" fill="#082f4c"/>
+      <path d="M74 121 Q95 132 119 127" fill="none" stroke="#fff" stroke-width="3" opacity=".8"/>
+    </svg>
+    <p class="message">Eres alguien muy especial para mí. Quiero demostrártelo con amor, paciencia y hechos, todos los días. <span class="heart">♥</span></p>
+  </section>
+  <div class="hint">DESLIZA, RESPIRA Y RECUERDA QUE TE AMO</div>
+</main>
+<div class="wave" aria-hidden="true"></div>
+<script>
+  const loveButton = document.getElementById('loveButton');
+  const surprise = document.getElementById('surprise');
+  loveButton.addEventListener('click', () => {
+    const isShown = surprise.classList.toggle('show');
+    loveButton.setAttribute('aria-expanded', String(isShown));
+    loveButton.textContent = isShown ? 'Volver a leer ❤️' : 'Presiona aquí ❤️';
+    if (isShown) surprise.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  });
+</script>
+</body>
+</html>
